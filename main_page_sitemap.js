@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log('메인 페이지 전용 sitemap을 로딩했다.');
+    console.log('>>>>>>>>> 메인 페이지 전용 sitemap을 로딩했다.');
     // https://www.jsdelivr.com/github
     const WEB_TEMPLATE_JSON_URL = 'https://cdn.jsdelivr.net/gh/temp27-dsfsdf/marketer@main/template.json';
   
