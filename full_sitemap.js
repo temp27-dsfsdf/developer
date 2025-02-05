@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.log('full sitemap 실행하기');
+  console.log('>>>>>>>>> full sitemap 실행하기');
   // https://www.jsdelivr.com/github
   const WEB_TEMPLATE_JSON_URL = 'https://cdn.jsdelivr.net/gh/temp27-dsfsdf/marketer@main/template.json';
 
