@@ -329,9 +329,10 @@ function initDCSitemap(json_data) {
             const quantity =
               parseInt(document.querySelector("input#qty")?.value, 10) || 0;
 
-            const image_url = document.querySelector("div[class='lslide active'] img")?.src || '';
+              alert('테스트');
 
             if (quantity > 0 && price_value) {
+              const image_url = document.querySelector(".lslide.active img")?.src || '';
               SalesforceInteractions.sendEvent({
                 interaction: {
                   name: "AddToCartClicked",
