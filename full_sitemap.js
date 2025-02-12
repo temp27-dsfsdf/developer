@@ -335,8 +335,6 @@ function initDCSitemap(json_data) {
             const quantity =
               parseInt(document.querySelector("input#qty")?.value, 10) || 0;
 
-              alert('테스트');
-
             if (quantity > 0 && price_value) { 
               SalesforceInteractions.sendEvent({
                 interaction: {
