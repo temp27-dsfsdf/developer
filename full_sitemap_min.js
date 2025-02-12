@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function initDCSitemap(json_data) {
-  console.log("dxentric sitemap v1.3 - ?sf_personalization_wpm");
+  console.log("dxentric sitemap v1.4 - ?sf_personalization_wpm");
   const PREVIOUS_URL = document.referrer;
   const BASE_URL = "https://mcp.dxentric.co.kr:4433/shop/";
   const CURRENT_URL = window.location.href;
