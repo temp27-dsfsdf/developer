@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log('>>>>>>>>> full sitemap 실행하기');
   // https://www.jsdelivr.com/github
   const WEB_TEMPLATE_JSON_URL = 'https://cdn.jsdelivr.net/gh/temp27-dsfsdf/marketer@main/template.json';
+  // https://purge.jsdelivr.net//gh/temp27-dsfsdf/developer@main/full_sitemap_min.js"
 
   fetch(WEB_TEMPLATE_JSON_URL)
     .then(response => {
@@ -21,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function initDCSitemap(json_data) {
-  console.log("dxentric sitemap v1.3 - ?sf_personalization_wpm");
+  console.log("dxentric sitemap v1.4 - ?sf_personalization_wpm");
   const PREVIOUS_URL = document.referrer;
   const BASE_URL = "https://mcp.dxentric.co.kr:4433/shop/";
   const CURRENT_URL = window.location.href;
@@ -29,7 +30,7 @@ function initDCSitemap(json_data) {
   const TRIMMED_URL = CURRENT_URL.split("?")[0];
   const trimmedPreviousUrl = PREVIOUS_URL.split("?")[0];
   let price_value;
-
+  let image_url;
   
 
  // Predefined Templates
@@ -288,7 +289,7 @@ function initDCSitemap(json_data) {
         })
       ]
     };
-    
+  
     const PRODUCT_DETAIL_PAGE = {
       name: "PdpEntered",
       isMatch: () => {
@@ -315,6 +316,11 @@ function initDCSitemap(json_data) {
           const colonIndex = text.indexOf(": ");
           return colonIndex !== -1 ? text.substring(colonIndex + 2) : "";
         })(),
+        imageURL: (() => {
+          image_url = document.querySelector(".lslide.active img")?.src || '';
+
+          return image_url;
+        })(),
       },
       listeners: [
         SalesforceInteractions.listener(
@@ -329,7 +335,9 @@ function initDCSitemap(json_data) {
             const quantity =
               parseInt(document.querySelector("input#qty")?.value, 10) || 0;
 
-            if (quantity > 0 && price_value) {
+              alert('테스트');
+
+            if (quantity > 0 && price_value) { 
               SalesforceInteractions.sendEvent({
                 interaction: {
                   name: "AddToCartClicked",
@@ -340,6 +348,7 @@ function initDCSitemap(json_data) {
                   ecrmProductId: document.querySelector("input#item_id")?.value || "",
                   ecrmPrice: price_value,
                   ecrmQuantity: quantity,
+                  imageURL: image_url,
                 },
               });
             }
