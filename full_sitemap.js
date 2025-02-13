@@ -241,6 +241,11 @@ function initDCSitemap(json_data) {
                   return parseFloat(priceElement?.textContent?.replace(/[^0-9]/g, "") || "0");
                 })(),
                 currency: "KRW",
+                imageURL: (() => {
+                  const img_url = row.querySelector("td:nth-child(1) img")?.src || "";
+
+                  return img_url;
+                })(),
               }
             });
           });
