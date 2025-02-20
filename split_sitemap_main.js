@@ -1,49 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => { 
-    const WEB_TEMPLATE_JSON_URL = 'https://cdn.jsdelivr.net/gh/temp27-dsfsdf/developer@main/template_min.json';
-  
-    const pre_define_json = [
-      {
-        "name": "ItemPageRecs",
-        "substitutionDefinitions": {
-          "personalizationContentId": {
-            "defaultValue": "[personalizationContentId]"
-          },
-          "introText": {
-            "defaultValue": "[attributes].[introText]"
-          },
-          "recs": {
-            "defaultValue": "[data]"
-          },
-          "name": {
-            "defaultValue": "[ssot__Name__c]"
-          },
-          "price": {
-            "defaultValue": "[price__c]"
-          }
-        },
-        "transformerType": "Handlebars",
-        "transformerTypeDetails": {
-          "html": "\n          {{#each (subVar \"recs\")}}\n            <a href=\"https://www.naver.com/\" target=\"_blank\"> \n              <div class=\"w-72 shadow-md rounded-xl overflow-hidden\" style=\"background-color: #434a57;\">\n                <img src=\"https://image.edaily.co.kr/images/Photo/files/NP/S/2021/02/PS21021200161.jpg\" alt=\"\" class=\"w-72\" /> \n                <p class=\"text-lg font-bold\">{{subVar \"ssot__Name__c\"}}</p>\n                <p>価格: {{subVar \"price\"}}円</p>\n              </div>\n            </a>\n          {{/each}}\n                "
-        },
-        "lastModifiedDate": 1630000000000
-      }
-    ];
-  
-    fetch(WEB_TEMPLATE_JSON_URL)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
-        }
-        return response.json();
-    })
-    .then(exp_json_data => {
-        console.log("불러온 JSON 데이터:", exp_json_data);
-        initDCSitemap(exp_json_data, pre_define_json);
-    })
-    .catch(error => {
-        console.error("Fetching JSON failed:", error);
-    });
-
   function initDCSitemap(exp_json_data, pre_define_json) {
     console.log("dxentric sitemap v1.2");
     const PREVIOUS_URL = document.referrer;
@@ -225,4 +179,3 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
-  });
