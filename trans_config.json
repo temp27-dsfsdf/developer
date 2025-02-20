@@ -1,0 +1,38 @@
+[
+    {
+      name: 'ItemPageRecs',
+      substitutionDefinitions: {
+        personalizationContentId: {
+          defaultValue: "[personalizationContentId]",
+        },
+        introText: {
+          defaultValue: "[attributes].[introText]",
+        },
+        recs: {
+          defaultValue: "[data]",
+        },
+        name: {
+          defaultValue: "[ssot__Name__c]",
+        },
+        price: {
+          defaultValue: "[price__c]",
+        },
+  
+      },
+      transformerType: 'Handlebars',
+      transformerTypeDetails: {
+        html: `
+          {{#each (subVar "recs")}}
+            <a href="https://www.naver.com/" target="_blank"> 
+              <div class="w-72 shadow-md rounded-xl overflow-hidden" style="background-color: #434a57;">
+                <img src="https://image.edaily.co.kr/images/Photo/files/NP/S/2021/02/PS21021200161.jpg" alt="" class="w-72" /> 
+                <p class="text-lg font-bold">{{subVar "ssot__Name__c"}}</p>
+                <p>価格: {{subVar "price"}}円</p>
+              </div>
+            </a>
+          {{/each}}
+                `
+      },
+      lastModifiedDate: new Date().getTime() - (1000 * 60 * 60 * 36),
+    }
+  ]
